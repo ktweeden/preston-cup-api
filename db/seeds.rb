@@ -1,6 +1,7 @@
 require_relative '../models/game'
 require_relative '../models/match'
 require_relative '../models/player'
+require "pry"
 
 players = [
   Player.new({'name' => 'Jack', 'avatar_url' => 'https://www.placecage.com/200/300'}),
@@ -25,4 +26,10 @@ matches = matches.map {|match| match.insert}
 
 matches[0].add_player(players[0].id)
 matches[0].add_player(players[1].id)
-matches[0].add_winner(players[0].id)
+matches[0].add_winner(players[1].id)
+
+
+binding.pry
+
+
+nil

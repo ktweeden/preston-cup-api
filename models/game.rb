@@ -19,8 +19,8 @@ class Game
     RETURNING *;
     "
     values = [@name, @image_url]
-    result = execute_query(sql, values).first
-    Game.new(result)
+    @id = execute_query(sql, values).first['id']
+    self
   end
 
 
@@ -28,6 +28,11 @@ class Game
     sql = "SELECT * FROM games;"
     results = execute_query(sql)
     results.map {|game| Game.new(game)}
+  end
+
+  def Game.find_by_id(id)
+    sql = "SELECT * FROM games WHERE id = $1;"
+    Game.new(execute_query(sql, [id]).first)
   end
 
 end

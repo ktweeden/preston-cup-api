@@ -19,8 +19,8 @@ class Player
     RETURNING *;
     "
     values = [@name, @avatar_url]
-    result = execute_query(sql, values).first
-    Player.new(result)
+    @id = execute_query(sql, values).first['id']
+    self
   end
 
   def Player.all
