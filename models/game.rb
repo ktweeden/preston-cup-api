@@ -23,4 +23,11 @@ class Game
     Game.new(result)
   end
 
+
+  def Game.all
+    sql = "SELECT * FROM games;"
+    results = execute_query(sql)
+    results.map {|game| Game.new(game)}
+  end
+
 end

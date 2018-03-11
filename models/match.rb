@@ -45,4 +45,10 @@ class Match
     Match.new(result)
   end
 
+  def Match.all
+    sql = "SELECT * FROM matches;"
+    results = execute_query(sql)
+    results.map {|match| Match.new(match)}
+  end
+
 end
