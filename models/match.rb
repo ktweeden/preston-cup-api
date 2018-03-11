@@ -55,6 +55,10 @@ class Match
     populate_participants
   end
 
+  def player_is_winner?(player_id)
+    @winners.any?{|winner| player_id == winner.id}
+  end
+
   def populate_game
     @game = Game.find_by_id(@game_id)
     self

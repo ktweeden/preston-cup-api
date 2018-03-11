@@ -1,0 +1,22 @@
+<main>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Game</th>
+      <th>Players</th>
+    </tr>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.id %></td>
+        <td><%= match.date %></td>
+        <td><%= match.game.name %></td>
+        <td>
+          <ul><% match.players.each do |player| %>
+            <li><%= player.name %><%= match.player_is_winner?(player.id) ? ' 🌟' : '' %></li>
+          <% end %></ul>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</main>

@@ -1,56 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Preston Cup</title>
-  </head>
-  <body>
-    <main>
-      <h3>Games</h3>
-      <table>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Image</th>
-        </tr>
-        <% @games.each do |game| %>
-          <tr>
-            <td><%= game.id %></td>
-            <td><%= game.name %></td>
-            <td><img src="<%= game.image_url %>" style="width:100px"></td>
-          </tr>
-        <% end %>
-      </table>
-      <h3>Players</h3>
-      <table>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Avatar</th>
-        </tr>
-        <% @players.each do |player| %>
-          <tr>
-            <td><%= player.id %></td>
-            <td><%= player.name %></td>
-            <td><img src="<%= player.avatar_url %>" style="width:100px"></td>
-          </tr>
-        <% end %>
-      </table>
-      <h3>Matches</h3>
-      <table>
-        <tr>
-          <th>Id</th>
-          <th>Game</th>
-          <th>Date</th>
-        </tr>
-        <% @matches.each do |match| %>
-          <tr>
-            <td><%= match.id %></td>
-            <td><%= match.game_id %></td>
-            <td><%= match.date %></td>
-          </tr>
-        <% end %>
-      </table>
-    </main>
-  </body>
-</html>
+<main>
+  <h3>Games</h3>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.id %></td>
+        <td><%= game.name %></td>
+        <td><img src="<%= game.image_url %>" style="width:100px"></td>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Players</h3>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Avatar</th>
+    </tr>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.id %></td>
+        <td><%= player.name %></td>
+        <td><img src="<%= player.avatar_url %>" style="width:100px"></td>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Matches</h3>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Game</th>
+      <th>Date</th>
+    </tr>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.id %></td>
+        <td><%= match.game_id %></td>
+        <td><%= match.date %></td>
+      </tr>
+    <% end %>
+  </table>
+</main>
