@@ -24,7 +24,8 @@ class Player
   end
 
   def Player.all
-    sql = "SELECT * FROM players;"
+    sql = "SELECT * FROM players
+    ORDER BY name;"
     results = execute_query(sql)
     results.map {|player| Player.new(player)}
   end

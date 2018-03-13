@@ -1,0 +1,22 @@
+<main>
+  <h2>Add a match</h2>
+  <form action="/matches" method="post">
+    <label for="date">Date</label>
+    <input type="date" name="date">
+
+    <label for="game_id">Game</label>
+    <select name="game_id">
+      <% for game in @games %>
+        <option value="<%= game.id %>"><%= game.name %></option>
+      <% end %>
+    </select>
+
+    <label for="winner_id">Winner</label>
+    <select name="winner_id">
+      <% for player in @players %>
+        <option value="<%= player.id %>"><%= player.name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Save Match">
+  </form>
+</main>

@@ -25,7 +25,8 @@ class Game
 
 
   def Game.all
-    sql = "SELECT * FROM games;"
+    sql = "SELECT * FROM games
+    ORDER BY name;"
     results = execute_query(sql)
     results.map {|game| Game.new(game)}
   end
