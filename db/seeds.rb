@@ -28,8 +28,5 @@ matches[0].add_player(players[0].id)
 matches[0].add_player(players[1].id)
 matches[0].add_winner(players[1].id)
 
-
-binding.pry
-
-
-nil
+# binding.pry
+# nil
