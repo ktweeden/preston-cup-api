@@ -14,3 +14,12 @@ get '/matches/add' do
   @players = Player.all
   erb(:"matches/add")
 end
+
+post '/matches' do
+  players = Player.all
+  match = Match.new(params).insert
+  players.each {|player| match.add_player(player.id)}
+  match.add_winner(params['winner_id'])
+  p match
+  redirect '/matches'
+end

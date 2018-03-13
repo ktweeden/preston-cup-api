@@ -50,13 +50,13 @@ class Match
     self
   end
 
+  def player_is_winner?(player_id)
+    @winners.any?{|winner| player_id == winner.id}
+  end
+
   def populate_extra_info
     populate_game
     populate_participants
-  end
-
-  def player_is_winner?(player_id)
-    @winners.any?{|winner| player_id == winner.id}
   end
 
   def populate_game
@@ -65,20 +65,25 @@ class Match
   end
 
   def populate_participants
-    sql = "
-    SELECT players.*, match_winners.player_id AS winner_id FROM players
-    INNER JOIN match_players ON match_players.player_id = players.id
-    LEFT JOIN match_winners ON match_winners.player_id = players.id
-    WHERE match_players.match_id = $1;"
-    values = [@id]
-    results = execute_query(sql, values)
-    winners = results.find_all{|player| player['winner_id'] != nil }
-    results.each do |player|
-      player_model =  Player.new(player)
-      @players.push(player_model)
-      @winners.push(player_model) if winners.find{|winner| player_model.id == winner['id']}
-    end
+    populate_players
+    populate_winners
+  end
 
+  def populate_players
+    sql = "
+    SELECT players.* FROM players
+    INNER JOIN match_players ON match_players.player_id = players.id
+    WHERE match_players.match_id = $1;"
+    @players = execute_query(sql, [@id]).map {|player| Player.new(player)}
+    self
+  end
+
+  def populate_winners
+    sql = "
+    SELECT players.* FROM players
+    INNER JOIN match_winners ON match_winners.player_id = players.id
+    WHERE match_winners.match_id = $1;"
+    @winners = execute_query(sql, [@id]).map {|winner| Player.new(winner)}
     self
   end
 
