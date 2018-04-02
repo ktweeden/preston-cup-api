@@ -7,6 +7,7 @@ require_relative './models/match'
 
 require_relative './controllers/matches'
 require_relative './controllers/games'
+require_relative './controllers/players'
 
 
 get '/' do

@@ -1,0 +1,11 @@
+<main>
+  <% @players.each do |player|%>
+    <h3><%= player.name %></h3>
+    <p>Total matches won: <%= player.total_matches_won%></p>
+    <ul>
+      <%player.matches_won_by_game.each do |wins_info| %>
+        <li><%= wins_info['game_name']%>: <%= wins_info['matches_won'] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</main>
